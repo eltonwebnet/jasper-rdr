@@ -1,0 +1,26 @@
+{
+    "name": "eltonwebnet/jasper-rdr",
+    "description": "Renderizador de Relatorios Jasper para Laravel",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Eltonwebnet\\JasperRdr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elton França Alencar",
+            "email": "eltonwebnet@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Eltonwebnet\\JasperRdr\\JasperRdrServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
