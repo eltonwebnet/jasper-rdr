@@ -18,6 +18,9 @@
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
+            "dont-discover": [
+                "*"
+            ],
             "providers": [
                 "Eltonwebnet\\JasperRdr\\JasperRdrServiceProvider"
             ]
