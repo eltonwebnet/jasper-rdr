@@ -1,5 +1,6 @@
 <?php
 
+namespace Eltonwebnet\JasperRdr;
 
 use File;
 use Illuminate\Support\Facades\Storage;
