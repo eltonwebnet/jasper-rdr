@@ -1,5 +1,6 @@
 {
     "name": "eltonwebnet/jasper-rdr",
+    "version": "dev-master",
     "description": "Renderizador de Relatorios Jasper para Laravel",
     "type": "project",
     "license": "MIT",
