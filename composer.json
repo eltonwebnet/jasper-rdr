@@ -20,9 +20,6 @@
         "laravel": {
             "dont-discover": [
                 "*"
-            ],
-            "providers": [
-                "Eltonwebnet\\JasperRdr\\JasperRdrServiceProvider"
             ]
         }
     },
