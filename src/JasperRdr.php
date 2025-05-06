@@ -8,7 +8,6 @@ use Str;
 
 class JasperRdr {
     public static function render(String $dados, String $template, Array $parameters = [], String $tipo = 'pdf'): array {
-
         $uuid = Str::uuid()->toString();
         $new_parameters = [];
         foreach ($parameters as $key => $value) {
@@ -17,11 +16,11 @@ class JasperRdr {
         }
         $new_parameters_json = json_encode($new_parameters);
         $storage_full_path = Storage::disk("local")->path("relatorios");
-        $json_full_path = "$storage_full_path\\$uuid.json";
-        $report_file_full_path = "$storage_full_path\\$uuid" . ($tipo == "pdf" ? ".pdf" : ".xlsx");
+        $json_full_path = "$storage_full_path/$uuid.json";
+        $report_file_full_path = "$storage_full_path/$uuid" . ($tipo == "pdf" ? ".pdf" : ".xlsx");
 
-        Storage::put("relatorios\\$uuid.json", $dados);
-        $render_path = dirname(__FILE__)."\\jasper-rdr-compiler.jar";
+        Storage::put("relatorios/$uuid.json", $dados);
+        $render_path = dirname(__FILE__)."/jasper-rdr-compiler.jar";
         exec('java -jar ' .$render_path. " $template $tipo $uuid $storage_full_path $json_full_path  $new_parameters_json 2>&1",$output, $result);
         $hasError = false;
         if ($result != 0) {
