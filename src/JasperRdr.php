@@ -22,7 +22,7 @@ class JasperRdr {
         //Storage::put("relatorios/$uuid.json", $dados);
         Storage::disk('local')->put("relatorios/$uuid.json", $dados);
 
-        $render_path = dirname(__FILE__)."/jasper-rdr-compiler.jar";
+        $render_path = dirname(__FILE__) . "/jasper-rdr-compilerxx.jar";
         exec('java -jar ' .$render_path. " $template $tipo $uuid $storage_full_path $json_full_path  $new_parameters_json 2>&1",$output, $result);
         $hasError = false;
         if ($result != 0) {
