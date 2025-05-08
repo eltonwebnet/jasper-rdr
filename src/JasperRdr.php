@@ -16,6 +16,7 @@ class JasperRdr {
         }
         $new_parameters_json = json_encode($new_parameters);
         $storage_full_path = Storage::disk("local")->path("relatorios");
+        dd($storage_full_path);
         $json_full_path = "$storage_full_path/$uuid.json";
         $report_file_full_path = "$storage_full_path/$uuid" . ($tipo == "pdf" ? ".pdf" : ".xlsx");
 
