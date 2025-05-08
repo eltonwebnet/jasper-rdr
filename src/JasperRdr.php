@@ -16,11 +16,10 @@ class JasperRdr {
         }
         $new_parameters_json = json_encode($new_parameters);
         $storage_full_path = Storage::disk("local")->path("relatorios");
-        dd($storage_full_path);
         $json_full_path = "$storage_full_path/$uuid.json";
         $report_file_full_path = "$storage_full_path/$uuid" . ($tipo == "pdf" ? ".pdf" : ".xlsx");
 
-        Storage::put("relatorios/$uuid.json", $dados);
+        Storage::put("app/relatorios/$uuid.json", $dados);
         $render_path = dirname(__FILE__)."/jasper-rdr-compiler.jar";
         exec('java -jar ' .$render_path. " $template $tipo $uuid $storage_full_path $json_full_path  $new_parameters_json 2>&1",$output, $result);
         $hasError = false;
