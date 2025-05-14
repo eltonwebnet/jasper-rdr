@@ -5,6 +5,7 @@ namespace Eltonwebnet\JasperRdr;
 use File;
 use Illuminate\Support\Facades\Storage;
 use Str;
+use Illuminate\Support\Facades\Log;
 
 class JasperRdr {
     public static function render(String $dados, String $template, Array $parameters = [], String $tipo = 'pdf'): array {
@@ -27,6 +28,7 @@ class JasperRdr {
         $hasError = false;
         if ($result != 0) {
             $hasError = true;
+            Log::error($output);
         }
         if (!$hasError) {
             File::delete($json_full_path);
