@@ -46,7 +46,7 @@ class JasperRdr
 
         // Parâmetros como JSON limpo (a versão antiga fazia um quoting manual que quebrava o JSON).
         $paramsJson = json_encode(
-            array_map(static fn ($v) => (string) $v, $parameters),
+            array_map(static function ($v) { return (string) $v; }, $parameters),
             JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
         );
 
@@ -73,7 +73,7 @@ class JasperRdr
         }
 
         $saida = preg_split('/\r\n|\r|\n/', trim($process->getOutput()."\n".$process->getErrorOutput())) ?: [];
-        $saida = array_values(array_filter($saida, static fn ($l) => $l !== ''));
+        $saida = array_values(array_filter($saida, static function ($l) { return $l !== ''; }));
 
         // Sucesso só se o processo retornou 0 E o arquivo foi realmente gerado.
         $hasError = ! $process->isSuccessful() || ! is_file($reportPath);
